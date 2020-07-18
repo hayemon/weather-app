@@ -84,7 +84,7 @@ const Weather = ({
                 </Card>}
                 <br />
                 {featured.map((item, index) => (
-                    <Button key={index}>
+                    <Button key={index} onClick={() => getWeather(item.name)}>
                         {item.name}
                     </Button>
                 ))}
