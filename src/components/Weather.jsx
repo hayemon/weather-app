@@ -54,26 +54,30 @@ const Weather = ({
         <AppProvider i18n={enTranslations}>
             <Page title="Example Weather">
                 <TextField label="Store name" value={value} onChange={handleChange} />
-
+                <br />
                 {weather && weather.weather && <Card title={weather.name} sectioned>
-                    {weather.weather &&
-                        weather.weather.map(((weatherItem, weatherItemIndex) =>
-                            <div key={weatherItem.id}>
-                                <h5 style={{ textTransform: 'capitalize' }}>
-                                    {weatherItem.description.toString() + ((!weather.weather.length - 1 == weatherItemIndex) ? ', ' : '')}
-                                </h5>
-                                <img src={`http://openweathermap.org/img/wn/${weatherItem.icon}@2x.png`} />
-                            </div>
-                        ))}
+                    <div style={{ display: 'flex' }}>
+                        <div style={{ marginRight: '32px' }}>
+                            {weather.weather &&
+                                weather.weather.map(((weatherItem, weatherItemIndex) =>
+                                    <div key={weatherItem.id}>
+                                        <h5 style={{ textTransform: 'capitalize' }}>
+                                            {weatherItem.description.toString() + ((!weather.weather.length - 1 == weatherItemIndex) ? ', ' : '')}
+                                        </h5>
+                                        <img src={`http://openweathermap.org/img/wn/${weatherItem.icon}@2x.png`} />
+                                    </div>
+                                ))}
+                        </div>
 
-                    <div>
-                        Temperature: {weather.main.temp}°C ({weather.main.temp_min}-{weather.main.temp_max})
-                        <br />
-                        Feels like: {weather.main.feels_like} °C
-                        <br />
-                        Humidity: {weather.main.humidity}%
-                        <br />
-                        Wind speed: {weather.wind.speed} m/s
+                        <div>
+                            Temperature: {weather.main.temp}°C ({weather.main.temp_min}-{weather.main.temp_max})
+                            <br />
+                            Feels like: {weather.main.feels_like} °C
+                            <br />
+                            Humidity: {weather.main.humidity}%
+                            <br />
+                            Wind speed: {weather.wind.speed} m/s
+                        </div>
                     </div>
                     <br />
                     <Button onClick={() => addFeatured(weather)}>Add to featured</Button>
